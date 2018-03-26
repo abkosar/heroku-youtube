@@ -93,7 +93,8 @@ def list_video(search):
 
 @app.post("/video-details-url/<vid:path>")
 def send_yt_url(vid):
-    url = "http://video.genyoutube.net/{}".format(vid)
+    url = vid
+    url = "http://video.genyoutube.net/{}".format(url)
     class items:
         def getValue(self, url):
             self.url = url
