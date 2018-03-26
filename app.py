@@ -91,7 +91,7 @@ def list_video(search):
         link_list[20].split("https://video.genyoutube.net/")[1], text_list[20], duration_list[20])
 
 
-@app.post("/video-details-url/<vid:path>")
+@app.get("/video-details-url/<vid:path>")
 def send_yt_url(vid):
     url = vid
     url = "http://video.genyoutube.net/{}".format(url)
