@@ -18,10 +18,10 @@ def youtube_list():
     name = request.forms.search_youtube
     if name.startswith("https://www.youtube.com") or name.startswith("https://m.youtube.com"):
         if name.startswith("https://m.youtube.com/"):
-            url = name.split("https://m.youtube.com/")[1]
+            url = name.split("https://m.youtube.com/watch?v=")[1]
             return '<meta http-equiv="refresh" content="0;URL=/video-details-url/{}">'.format(url)
         else:
-            url = name.split("https://www.youtube.com/")[1]
+            url = name.split("https://www.youtube.com/watch?v=")[1]
             return '<meta http-equiv="refresh" content="0;URL=/video-details-url/{}">'.format(url)
     else:
         return '<meta http-equiv="refresh" content="0;URL=/list-video/{}">'.format(name)
