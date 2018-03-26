@@ -4,8 +4,66 @@ from bottle import request, Bottle, run
 import html_files
 import os
 
+
 app = Bottle()
 
+
+class items:
+    def getValue(self, url):
+        self.url = url
+        self.items_in = {}
+        self.soup = BeautifulSoup(requests.get(url).content, "html.parser")
+        for self.title in self.soup.findAll("h1", {"id": "ytitle"}):
+            self.items_in["song"] = self.title.text
+        self.duration_list_id = []
+        for self.duration in self.soup.findAll("small"):
+            self.duration_list_id.append(
+                self.duration.text.lstrip("Length: ").split("&nbsp;&nbsp;")[0].split(" ")[0].rstrip("\xa0\xa0"))
+        self.items_in["duration_time"] = self.duration_list_id[0]
+        for self.m4a in self.soup.findAll("a", {"data-itag": "140"}):
+            try:
+                self.items_in["sound"] = self.m4a.get("href").replace("GenYoutube.net_", "")
+            except:
+                self.items_in["sound"] = None
+        self.items_in["hd_video"] = "#"
+        self.items_in["hd_true"] = "hd not available"
+        for self.mp4_720p in self.soup.findAll("a", {"data-itag": "22"}):
+            self.items_in["hd_video"] = self.mp4_720p.get("href").replace("GenYoutube.net_", "")
+            self.items_in["hd_true"] = "Download"
+        for mp4_360p in self.soup.findAll("a", {"data-itag": "18"}):
+            try:
+                self.items_in["video_360p"] = mp4_360p.get("href").replace("GenYoutube.net_", "")
+            except:
+                self.items_in["video_360p"] = None
+
+        return self.items_in
+
+
+class items_list:
+    def getList(self, url):
+        self.list_in = {}
+        self.url = "https://www.genyoutube.net/search.php?q={}".format(url)
+        self.soup = BeautifulSoup(requests.get(self.url).content, "html.parser")
+        self.link_list = []
+        self.img_list = []
+        self.text_list = []
+        self.duration_list = []
+        for self.a in self.soup.findAll("div", {"class": "col-xs-6 col-sm-4 col-md-4 vidbox"}):
+            for self.video_link in self.a.findAll("a", {"class": "_moviethumb"}):
+                self.link_list.append(self.video_link.get("href"))
+            for self.img_link in self.a.findAll("img", {"class": "downloadimg"}):
+                self.img_list.append(self.img_link.get("src"))
+            for self.text in self.a.findAll("a", {"class": "moviea"}):
+                self.text_list.append(self.text.text)
+            for self.duration in self.a.findAll("span", {"class": "duration"}):
+                self.duration_list.append(self.duration.text)
+
+        self.list_in["link_list"] = self.link_list
+        self.list_in["img_list"] = self.img_list
+        self.list_in["text_list"] = self.duration_list
+        self.list_in["duration_list"] = self.text_list
+
+        return self.list_in
 
 @app.get("/")
 def youtube():
@@ -30,33 +88,6 @@ def youtube_list():
 @app.get("/list-video/<search:path>")
 def list_video(search):
     name = search
-    class items_list:
-        def getList(self, url):
-            self.list_in = {}
-            self.url = "https://www.genyoutube.net/search.php?q={}".format(url)
-            self.soup = BeautifulSoup(requests.get(self.url).content, "html.parser")
-            self.link_list = []
-            self.img_list = []
-            self.text_list = []
-            self.duration_list = []
-            for self.a in self.soup.findAll("div", {"class": "col-xs-6 col-sm-4 col-md-4 vidbox"}):
-                for self.video_link in self.a.findAll("a", {"class": "_moviethumb"}):
-                    self.link_list.append(self.video_link.get("href"))
-                for self.img_link in self.a.findAll("img", {"class": "downloadimg"}):
-                    self.img_list.append(self.img_link.get("src"))
-                for self.text in self.a.findAll("a", {"class": "moviea"}):
-                    self.text_list.append(self.text.text)
-                for self.duration in self.a.findAll("span", {"class": "duration"}):
-                    self.duration_list.append(self.duration.text)
-
-            self.list_in["link_list"] = self.link_list
-            self.list_in["img_list"] = self.img_list
-            self.list_in["text_list"] = self.duration_list
-            self.list_in["duration_list"] = self.text_list
-
-            return self.list_in
-
-
     item_list = items_list()
     value_list = item_list.getList(name)
     img_list = value_list["img_list"]
@@ -95,36 +126,6 @@ def list_video(search):
 def send_yt_url(vid):
     url = vid
     url = "http://video.genyoutube.net/{}".format(url)
-    class items:
-        def getValue(self, url):
-            self.url = url
-            self.items_in = {}
-            self.soup = BeautifulSoup(requests.get(url).content, "html.parser")
-            for self.title in self.soup.findAll("h1", {"id": "ytitle"}):
-                self.items_in["song"] = self.title.text
-            self.duration_list_id = []
-            for self.duration in self.soup.findAll("small"):
-                self.duration_list_id.append(
-                    self.duration.text.lstrip("Length: ").split("&nbsp;&nbsp;")[0].split(" ")[0].rstrip("\xa0\xa0"))
-            self.items_in["duration_time"] = self.duration_list_id[0]
-            for self.m4a in self.soup.findAll("a", {"data-itag": "140"}):
-                try:
-                    self.items_in["sound"] = self.m4a.get("href").replace("GenYoutube.net_", "")
-                except:
-                    self.items_in["sound"] = None
-            self.items_in["hd_video"] = "#"
-            self.items_in["hd_true"] = "hd not available"
-            for self.mp4_720p in self.soup.findAll("a", {"data-itag": "22"}):
-                self.items_in["hd_video"] = self.mp4_720p.get("href").replace("GenYoutube.net_", "")
-                self.items_in["hd_true"] = "Download"
-            for mp4_360p in self.soup.findAll("a", {"data-itag": "18"}):
-                try:
-                    self.items_in["video_360p"] = mp4_360p.get("href").replace("GenYoutube.net_", "")
-                except:
-                    self.items_in["video_360p"] = None
-
-            return self.items_in
-
     item = items()
     values = item.getValue(url=url)
     song = values["song"]
@@ -146,36 +147,6 @@ def send_yt_url(vid):
 def send_yt():
     video_id = request.forms.youtube_id
     url = "http://video.genyoutube.net/{}".format(video_id)
-    class items:
-        def getValue(self, url):
-            self.url = url
-            self.items_in = {}
-            self.soup = BeautifulSoup(requests.get(url).content, "html.parser")
-            for self.title in self.soup.findAll("h1", {"id": "ytitle"}):
-                self.items_in["song"] = self.title.text
-            self.duration_list_id = []
-            for self.duration in self.soup.findAll("small"):
-                self.duration_list_id.append(
-                    self.duration.text.lstrip("Length: ").split("&nbsp;&nbsp;")[0].split(" ")[0].rstrip("\xa0\xa0"))
-            self.items_in["duration_time"] = self.duration_list_id[0]
-            for self.m4a in self.soup.findAll("a", {"data-itag": "140"}):
-                try:
-                    self.items_in["sound"] = self.m4a.get("href").replace("GenYoutube.net_", "")
-                except:
-                    self.items_in["sound"] = None
-            self.items_in["hd_video"] = "#"
-            self.items_in["hd_true"] = "hd not available"
-            for self.mp4_720p in self.soup.findAll("a", {"data-itag": "22"}):
-                self.items_in["hd_video"] = self.mp4_720p.get("href").replace("GenYoutube.net_", "")
-                self.items_in["hd_true"] = "Download"
-            for mp4_360p in self.soup.findAll("a", {"data-itag": "18"}):
-                try:
-                    self.items_in["video_360p"] = mp4_360p.get("href").replace("GenYoutube.net_", "")
-                except:
-                    self.items_in["video_360p"] = None
-
-            return self.items_in
-
     item = items()
     values = item.getValue(url=url)
     song = values["song"]
