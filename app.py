@@ -16,12 +16,20 @@ def youtube():
 def youtube_list():
     global name
     name = request.forms.search_youtube
-    return '<meta http-equiv="refresh" content="0;URL=/list-video/{}">'.format(name)
+    if name.startswith("https://www.youtube.com") or name.startswith("https://m.youtube.com"):
+        if name.startswith("https://m.youtube.com/"):
+            url = name.split("https://m.youtube.com/")[1]
+            return '<meta http-equiv="refresh" content="0;URL=/video-details-url/{}">'.format(url)
+        else:
+            url = name.split("https://www.youtube.com/")[1]
+            return '<meta http-equiv="refresh" content="0;URL=/video-details-url/{}">'.format(url)
+    else:
+        return '<meta http-equiv="refresh" content="0;URL=/list-video/{}">'.format(name)
 
 
-@app.get("/list-video/<mypath:path>")
-def list_video(mypath):
-    name = mypath
+@app.get("/list-video/<search:path>")
+def list_video(search):
+    name = search
     class items_list:
         def getList(self, url):
             self.list_in = {}
@@ -83,6 +91,56 @@ def list_video(mypath):
         link_list[20].split("https://video.genyoutube.net/")[1], text_list[20], duration_list[20])
 
 
+@app.post("/video-details-url/<vid:path>")
+def send_yt_url(vid):
+    url = "http://video.genyoutube.net/{}".format(vid)
+    class items:
+        def getValue(self, url):
+            self.url = url
+            self.items_in = {}
+            self.soup = BeautifulSoup(requests.get(url).content, "html.parser")
+            for self.title in self.soup.findAll("h1", {"id": "ytitle"}):
+                self.items_in["song"] = self.title.text
+            self.duration_list_id = []
+            for self.duration in self.soup.findAll("small"):
+                self.duration_list_id.append(
+                    self.duration.text.lstrip("Length: ").split("&nbsp;&nbsp;")[0].split(" ")[0].rstrip("\xa0\xa0"))
+            self.items_in["duration_time"] = self.duration_list_id[0]
+            for self.m4a in self.soup.findAll("a", {"data-itag": "140"}):
+                try:
+                    self.items_in["sound"] = self.m4a.get("href").replace("GenYoutube.net_", "")
+                except:
+                    self.items_in["sound"] = None
+            self.items_in["hd_video"] = "#"
+            self.items_in["hd_true"] = "hd not available"
+            for self.mp4_720p in self.soup.findAll("a", {"data-itag": "22"}):
+                self.items_in["hd_video"] = self.mp4_720p.get("href").replace("GenYoutube.net_", "")
+                self.items_in["hd_true"] = "Download"
+            for mp4_360p in self.soup.findAll("a", {"data-itag": "18"}):
+                try:
+                    self.items_in["video_360p"] = mp4_360p.get("href").replace("GenYoutube.net_", "")
+                except:
+                    self.items_in["video_360p"] = None
+
+            return self.items_in
+
+    item = items()
+    values = item.getValue(url=url)
+    song = values["song"]
+    duration_time = values["duration_time"]
+    hd_video = values["hd_video"]
+    hd_true = values["hd_true"]
+    video_360p = values["video_360p"]
+    sound = values["sound"]
+
+    if hd_video == "#":
+        return html_files.video_details().format(song, video_360p, song, duration_time, hd_video, hd_true, video_360p,
+                                                 sound)
+    else:
+        return html_files.video_details().format(song, hd_video, song, duration_time, hd_video, hd_true, video_360p,
+                                                 sound)
+
+
 @app.post("/video-details")
 def send_yt():
     video_id = request.forms.youtube_id
@@ -125,7 +183,6 @@ def send_yt():
     hd_true = values["hd_true"]
     video_360p = values["video_360p"]
     sound = values["sound"]
-
 
     if hd_video == "#":
         return html_files.video_details().format(song, video_360p, song, duration_time, hd_video, hd_true, video_360p, sound)
