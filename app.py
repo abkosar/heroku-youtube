@@ -81,6 +81,9 @@ def youtube_list():
         else:
             url = name.split("https://www.youtube.com/watch?v=")[1]
             return '<meta http-equiv="refresh" content="0;URL=/video-details-url/{}">'.format(url)
+    elif name.startswith("https://youtu.be/"):
+        url = name.split("https://youtu.be/")[1]
+        return '<meta http-equiv="refresh" content="0;URL=/video-details-url/{}">'.format(url)
     else:
         return '<meta http-equiv="refresh" content="0;URL=/list-video/{}">'.format(name)
 
