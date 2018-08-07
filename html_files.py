@@ -357,6 +357,7 @@ def yt_list():
         <yt>{} - {}</yt>
     </div><br>
 	</div>
+	<br>
 	<div style="display:flex;">
     <div id="submitForm3" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
@@ -371,6 +372,7 @@ def yt_list():
         <yt>{} - {}</yt>
     </div><br>
 	</div>
+	<br>
 	<div style="display:flex;">
     <div id="submitForm6" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
@@ -385,6 +387,7 @@ def yt_list():
         <yt>{} - {}</yt>
     </div><br>
 	</div>
+	<br>
 	<div style="display:flex;">
     <div id="submitForm9" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
@@ -399,6 +402,7 @@ def yt_list():
         <yt>{} - {}</yt>
     </div><br>
 	</div>
+	<br>
 	<div style="display:flex;">
     <div id="submitForm12" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
@@ -413,6 +417,7 @@ def yt_list():
         <yt>{} - {}</yt>
     </div><br>
 	</div>
+	<br>
 	<div style="display:flex;">
     <div id="submitForm15" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
@@ -427,6 +432,7 @@ def yt_list():
         <yt>{} - {}</yt>
     </div><br>
 	</div>
+	<br>
 	<div style="display:flex;">
     <div id="submitForm18" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
