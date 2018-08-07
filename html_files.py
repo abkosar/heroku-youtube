@@ -202,127 +202,127 @@ def yt_list():
         #submitForm0 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm1 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm2 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm3 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm4 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm5 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm6 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm7 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm8 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm9 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm10 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm11 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm12 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm13 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm14 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm15 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm16 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm17 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm18 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm19 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #submitForm20 input{{
         background: url("{}");
         font-size: 0px;
-        width: 320px;
+        width: 300px;
         height: 180px;
         }}
         #form {{
