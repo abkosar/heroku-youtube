@@ -141,7 +141,7 @@ def send_yt_url(vid):
     hd_video = values["hd_video"]
     hd_true = values["hd_true"]
     video_360p = values["video_360p"]
-    sound = "/" + song + ".m4a"
+    sound = song + ".m4a"
 
     if hd_video == "#":
         return html_files.video_details().format(song, video_360p, song, duration_time, hd_video, hd_true, video_360p,
