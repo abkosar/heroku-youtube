@@ -1,3 +1,5 @@
 bottle
 BeautifulSoup4
 requests
+youtube_dl
+pafy
