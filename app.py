@@ -150,10 +150,6 @@ def send_yt_url(vid):
         return html_files.video_details().format(song, hd_video, song, duration_time, hd_video, hd_true, video_360p,
                                                  sound)
 
-@app.get("<filepath:re:.*\.m4a")
-def m4a(filepath)
-    return static_file(filepath)
-
 @app.post("/video-details")
 def send_yt():
     video_id = request.forms.youtube_id
