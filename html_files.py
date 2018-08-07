@@ -343,90 +343,104 @@ def yt_list():
     <input type="submit" id="input" value="Search"/></form>
     <h2 style="text-align:center;">Results for "{}":</h2><br>
     <form method="POST" action="/video-details">
-    <div id="submitForm0">
+	<div style="display:flex;">
+    <div id="submitForm0" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm1">
+    <div id="submitForm1" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm2">
+    <div id="submitForm2" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm3">
+	</div>
+	<div style="display:flex;">
+    <div id="submitForm3" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm4">
+    <div id="submitForm4" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm5">
+    <div id="submitForm5" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm6">
+	</div>
+	<div style="display:flex;">
+    <div id="submitForm6" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm7">
+    <div id="submitForm7" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm8">
+    <div id="submitForm8" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm9">
+	</div>
+	<div style="display:flex;">
+    <div id="submitForm9" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm10">
+    <div id="submitForm10" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm11">
+    <div id="submitForm11" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm12">
+	</div>
+	<div style="display:flex;">
+    <div id="submitForm12" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm13">
+    <div id="submitForm13" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm14">
+    <div id="submitForm14" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm15">
+	</div>
+	<div style="display:flex;">
+    <div id="submitForm15" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm16">
+    <div id="submitForm16" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm17">
+    <div id="submitForm17" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm18">
+	</div>
+	<div style="display:flex;">
+    <div id="submitForm18" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm19">
+    <div id="submitForm19" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
-    <div id="submitForm20">
+    <div id="submitForm20" style="flex:1;">
         <input type="submit" value="{}" name="youtube_id"><br><br>
         <yt>{} - {}</yt>
     </div><br>
+	</div>
     </form>
 </body>
 </html>
