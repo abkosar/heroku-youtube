@@ -129,7 +129,7 @@ def list_video(search):
 @app.get("/video-details-url/<vid:path>")
 def send_yt_url(vid):
     pafy_url = "https://www.youtube.com/watch?v=" + vid
-    video = pafy.new(url)
+    video = pafy.new(pafy_url)
     bestaudio = video.getbestaudio(preftype="m4a")
     audiostreams = video.audiostreams
     bestaudio.download()
