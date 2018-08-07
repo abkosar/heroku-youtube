@@ -6,7 +6,8 @@ def index():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>YouTube Downloader</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<title>YouTube</title>
 <style>
     @import url('https://fonts.googleapis.com/css?family=Rye');
     body{
@@ -14,7 +15,6 @@ def index():
     color: white;
     animation-name: body-back;
     animation-duration:2s;
-    animation-delay:2s;
     animation-fill-mode: forwards;
     }
     h1{
@@ -25,17 +25,6 @@ def index():
     color: black;
     animation-name: h3_color;
     animation-duration:2s;
-    animation-delay:1s;
-    animation-fill-mode: forwards;
-    }
-    .menu{
-    font-size: 50px;
-    color: white;
-    font-family: 'Rye', cursive;
-    text-decoration: none;
-    animation-name: go-back;
-    animation-duration:2s;
-    animation-delay:1s;
     animation-fill-mode: forwards;
     }
     #form {
@@ -48,7 +37,6 @@ def index():
     margin-bottom: 50px;
     animation-name: form-location;
     animation-duration:2s;
-    animation-delay:1s;
     animation-fill-mode: forwards;
     }
     #input{
@@ -60,25 +48,17 @@ def index():
     margin-left: 45px;
     margin-bottom: 50px;
     animation-name: input-location;
-    animation-duration:3s;
-    animation-delay:1s;
+    animation-duration:2s;
     animation-fill-mode: forwards;
     }
     ::placeholder {
-    color: red;
+    color: white;
     opacity: 1;
     }
     #yt{
         margin-top: 10%;
-        animation-name: ytube;
         animation-duration:2s;
-        animation-delay:1s;
         animation-fill-mode: forwards;
-    }
-    @keyframes ytube{
-        100%{
-            color: red;
-        }
     }
     @keyframes h3_color{
         100%{
@@ -87,37 +67,28 @@ def index():
     }
     @keyframes body-back{
         100%{
-            background-color: white;
+            background-color: gray;
         }
     }	
-    @keyframes go-back{
-        100%{
-            color: red;
-        }
-    }
     @keyframes input-location{
-        50%{
-            color: red;
-            background-color: white;
-        }
         100%{
-            color: red;
-            background-color: white;
+            color: white;
+            background-color: gray;
         }
     }
     @keyframes form-location {
         100%{
-            color: red;
-            background-color: white;
+            color: white;
+            background-color: gray;
         }
     }
 </style>
 </head>
 <body align="center">
-<h1 id="yt">YouTube</h1><br>
+<h1 class="animated rotateInDownLeft" id="yt"><color style="color:red;">You</color><color style="color:white;">Tube</color></h1><br>
 <form method="POST" action="/search-youtube">
-<input type="text" id="form" placeholder="song or url..." name="search_youtube"/>
-<input type="submit" id="input" value="Search"/>
+<input type="text" id="form" placeholder="şarkı, url..." name="search_youtube"/>
+<input type="submit" id="input" value="Ara"/>
 </form>
 </body>
 </html>
