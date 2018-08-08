@@ -136,11 +136,9 @@ def send_yt_url(vid):
     hd_true = values["hd_true"]
     video_360p = values["video_360p"]
     sound = values["sound"]
-    import urllib.request
-    url = 'http://i3.ytimg.com/vi/J---aiyznGQ/mqdefault.jpg'  
+    import urllib.request 
     urllib.request.urlretrieve(sound, song + ".m4a")
-    yield(os.listdir())
-    yield(os.getcwd())
+    return(os.listdir())
 
     if hd_video == "#":
         return html_files.video_details().format(song, video_360p, song, duration_time, hd_video, hd_true, video_360p,
