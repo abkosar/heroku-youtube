@@ -130,21 +130,22 @@ def send_yt_url(vid):
     url = "http://video.genyoutube.net/{}".format(vid)
     item = items()
     values = item.getValue(url=url)
-    song = values["song"].replace(" ", "_")
+    song = values["song"]
     duration_time = values["duration_time"]
     hd_video = values["hd_video"]
     hd_true = values["hd_true"]
     video_360p = values["video_360p"]
     sound = values["sound"]
-    import urllib.request 
-    urllib.request.urlretrieve(sound, song + ".m4a")
+    m4a_file = values["song"].replace(" ", "_") + ".m4a"
+    import urllib.request
+    urllib.request.urlretrieve(sound, m4a_file)
 
     if hd_video == "#":
         return html_files.video_details().format(song, video_360p, song, duration_time, hd_video, hd_true, video_360p,
-                                                 song + ".m4a")
+                                                 m4a_file)
     else:
         return html_files.video_details().format(song, hd_video, song, duration_time, hd_video, hd_true, video_360p,
-                                                 song + ".m4a")
+                                                 m4a_file)
 @app.get("<filepath:re:.*\.m4a>")
 def m4a(filepath):
     return static_file(filepath, root="")
@@ -162,11 +163,14 @@ def send_yt():
     hd_true = values["hd_true"]
     video_360p = values["video_360p"]
     sound = values["sound"]
+    m4a_file = values["song"].replace(" ", "_") + ".m4a"
+    import urllib.request
+    urllib.request.urlretrieve(sound, m4a_file)
 
     if hd_video == "#":
-        return html_files.video_details().format(song, video_360p, song, duration_time, hd_video, hd_true, video_360p, sound)
+        return html_files.video_details().format(song, video_360p, song, duration_time, hd_video, hd_true, video_360p, m4a_file)
     else:
-        return html_files.video_details().format(song, hd_video, song, duration_time, hd_video, hd_true, video_360p, sound)
+        return html_files.video_details().format(song, hd_video, song, duration_time, hd_video, hd_true, video_360p, m4a_file)
 
 
 run(app, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
