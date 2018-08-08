@@ -130,15 +130,14 @@ def send_yt_url(vid):
     url = "http://video.genyoutube.net/{}".format(vid)
     item = items()
     values = item.getValue(url=url)
-    song = values["song"]
+    song = values["song"].replace(" ", "_")
     duration_time = values["duration_time"]
     hd_video = values["hd_video"]
     hd_true = values["hd_true"]
     video_360p = values["video_360p"]
     sound = values["sound"]
     import urllib.request 
-    urllib.request.urlretrieve(sound, song + ".m4a")
-    return(os.listdir())
+    urllib.request.urlretrieve(sound, song.replace(" ", "_") + ".m4a")
 
     if hd_video == "#":
         return html_files.video_details().format(song, video_360p, song, duration_time, hd_video, hd_true, video_360p,
@@ -146,7 +145,11 @@ def send_yt_url(vid):
     else:
         return html_files.video_details().format(song, hd_video, song, duration_time, hd_video, hd_true, video_360p,
                                                  sound)
-
+@app.get("<filepath:re:.*\.m4a>")
+def m4a(filepath):
+    return static_file(filepath, root="")
+    
+    
 @app.post("/video-details")
 def send_yt():
     video_id = request.forms.youtube_id
