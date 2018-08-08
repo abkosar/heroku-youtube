@@ -152,7 +152,7 @@ def video_details():
         </tr>
         <tr>
             <td>M4A Audio</td>
-            <td><audio src="{}" controls/>
+            <td><audio src="/{}" controls/>
         </tr>
     </table>
     <footer id="homepage"><a href="/"><<< HomePage</a></footer>
