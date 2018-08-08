@@ -3,7 +3,6 @@ import requests
 from bottle import request, Bottle, run
 import html_files
 import os
-import pafy
 
 
 app = Bottle()
@@ -128,11 +127,6 @@ def list_video(search):
 
 @app.get("/video-details-url/<vid:path>")
 def send_yt_url(vid):
-    pafy_url = "https://www.youtube.com/watch?v=" + vid
-    video = pafy.new(pafy_url)
-    bestaudio = video.getbestaudio(preftype="m4a")
-    audiostreams = video.audiostreams
-    bestaudio.download()
     url = "http://video.genyoutube.net/{}".format(vid)
     item = items()
     values = item.getValue(url=url)
@@ -141,7 +135,12 @@ def send_yt_url(vid):
     hd_video = values["hd_video"]
     hd_true = values["hd_true"]
     video_360p = values["video_360p"]
-    sound = song + ".m4a"
+    sound = values["sound"]
+    import urllib.request
+    url = 'http://i3.ytimg.com/vi/J---aiyznGQ/mqdefault.jpg'  
+    urllib.request.urlretrieve(sound, song + ".m4a")
+    yield(os.listdir())
+    yield(os.getcwd())
 
     if hd_video == "#":
         return html_files.video_details().format(song, video_360p, song, duration_time, hd_video, hd_true, video_360p,
