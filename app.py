@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-from bottle import request, Bottle, run
+from bottle import request, Bottle, run, static_file
 import html_files
 import os
 
