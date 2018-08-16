@@ -136,16 +136,13 @@ def send_yt_url(vid):
     hd_true = values["hd_true"]
     video_360p = values["video_360p"]
     sound = values["sound"]
-    m4a_file = values["song"].replace(" ", "_") + ".m4a"
-    import urllib.request
-    urllib.request.urlretrieve(sound, m4a_file)
 
     if hd_video == "#":
         return html_files.video_details().format(song, video_360p, song, duration_time, hd_video, hd_true, video_360p,
-                                                 m4a_file)
+                                                 sound)
     else:
         return html_files.video_details().format(song, hd_video, song, duration_time, hd_video, hd_true, video_360p,
-                                                 m4a_file)
+                                                 sound)
 @app.get("<filepath:re:.*\.m4a>")
 def m4a(filepath):
     return static_file(filepath, root="")
@@ -163,14 +160,11 @@ def send_yt():
     hd_true = values["hd_true"]
     video_360p = values["video_360p"]
     sound = values["sound"]
-    m4a_file = values["song"].replace(" ", "_") + ".m4a"
-    import urllib.request
-    urllib.request.urlretrieve(sound, m4a_file)
 
     if hd_video == "#":
-        return html_files.video_details().format(song, video_360p, song, duration_time, hd_video, hd_true, video_360p, m4a_file)
+        return html_files.video_details().format(song, video_360p, song, duration_time, hd_video, hd_true, video_360p, sound)
     else:
-        return html_files.video_details().format(song, hd_video, song, duration_time, hd_video, hd_true, video_360p, m4a_file)
+        return html_files.video_details().format(song, hd_video, song, duration_time, hd_video, hd_true, video_360p, sound)
 
 
 run(app, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
